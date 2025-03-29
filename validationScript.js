@@ -14,16 +14,16 @@
 
 let subButton = document.getElementById("submit");
 let inputField = document.getElementById("inputField");
+const alphanumeric = /^[a-zA-Z0-9 ]+$/;
 
-document.getElementById("submit").addEventListener("click", (event) => {
+document.getElementById("submit").addEventListener("click", () => {
   console.log("Button clicked!"); // For debugging purposes
-  let inputValue = inputField.value;
-  let pattern = /^[a-zA-Z0-9 ]+$/;
-  if (pattern.test(inputValue)) {
-    inputValue.setCustomValidity("");
+  if (alphanumeric.test(inputField.value)) {
+    inputField.setCustomValidity("");
     alert("The form has been submitted.");
+    document.getElementById("myForm").submit();
   } else {
-    inputValue.setCustomValidity("Error, your input is not alphanumeric.")
+    inputField.setCustomValidity("Error, your input is not alphanumeric.")
   }
 })
 
